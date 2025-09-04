@@ -29,31 +29,33 @@ export default function Layout() {
         <Toolbar className="header-toolbar">
           <Typography variant="h6" component="h1" className="brand-title">MoHUA Dashboard</Typography>
           <Box sx={{ flex: 1 }} />
-          <FormControl size="small" className="filter-control">
-            <InputLabel id="time-mode-label">Time</InputLabel>
-            <Select labelId="time-mode-label" label="Time" value={timeMode} onChange={(e)=>setTimeMode(e.target.value)}>
-              <MenuItem value="Monthly">Monthly</MenuItem>
-              <MenuItem value="Cumulative">Cumulative</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl size="small" className="filter-control">
-            <InputLabel id="month-label">Month</InputLabel>
-            <Select labelId="month-label" label="Month" value={month} onChange={(e)=>setMonth(e.target.value)}>
-              {months.map((m)=>(<MenuItem key={m} value={m}>{m}</MenuItem>))}
-            </Select>
-          </FormControl>
-          <FormControl size="small" className="filter-control">
-            <InputLabel id="city-label">City</InputLabel>
-            <Select labelId="city-label" label="City" value={cityId} onChange={(e)=>setCityId(e.target.value)}>
-              {cities.map((c)=>(<MenuItem key={c.id} value={c.id}>{c.name}</MenuItem>))}
-            </Select>
-          </FormControl>
-          <FormControl size="small" className="filter-control">
-            <InputLabel id="category-label">Category</InputLabel>
-            <Select labelId="category-label" label="Category" value={categoryId} onChange={(e)=>setCategoryId(e.target.value)}>
-              {categories.map((c)=>(<MenuItem key={c.id} value={c.id}>{c.name}</MenuItem>))}
-            </Select>
-          </FormControl>
+          <div className="header-filters">
+            <FormControl size="small" className="filter-control" fullWidth>
+              <InputLabel id="time-mode-label">Time</InputLabel>
+              <Select labelId="time-mode-label" label="Time" value={timeMode} onChange={(e)=>setTimeMode(e.target.value)}>
+                <MenuItem value="Monthly">Monthly</MenuItem>
+                <MenuItem value="Cumulative">Cumulative</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl size="small" className="filter-control" fullWidth>
+              <InputLabel id="month-label">Month</InputLabel>
+              <Select labelId="month-label" label="Month" value={month} onChange={(e)=>setMonth(e.target.value)}>
+                {months.map((m)=>(<MenuItem key={m} value={m}>{m}</MenuItem>))}
+              </Select>
+            </FormControl>
+            <FormControl size="small" className="filter-control" fullWidth>
+              <InputLabel id="city-label">City</InputLabel>
+              <Select labelId="city-label" label="City" value={cityId} onChange={(e)=>setCityId(e.target.value)}>
+                {cities.map((c)=>(<MenuItem key={c.id} value={c.id}>{c.name}</MenuItem>))}
+              </Select>
+            </FormControl>
+            <FormControl size="small" className="filter-control" fullWidth>
+              <InputLabel id="category-label">Category</InputLabel>
+              <Select labelId="category-label" label="Category" value={categoryId} onChange={(e)=>setCategoryId(e.target.value)}>
+                {categories.map((c)=>(<MenuItem key={c.id} value={c.id}>{c.name}</MenuItem>))}
+              </Select>
+            </FormControl>
+          </div>
         </Toolbar>
       </AppBar>
 
