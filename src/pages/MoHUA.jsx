@@ -84,7 +84,7 @@ export default function MoHUA() {
 
       <Grid item xs={12} md={6}>
         <Paper elevation={2} className="panel panel-chart">
-          <Typography variant="h6" className="panel-title">Resolution Rate (%) across Categories</Typography>
+          <Typography variant="h6" className="panel-title panel-title-compact">Resolution Rate (%) across Categories</Typography>
           <div className="chart-wrapper" role="img" aria-label="Stacked column resolution rate across categories">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={resRateByCat} margin={{ top: 8, right: 16, bottom: 8, left: 0 }}>
