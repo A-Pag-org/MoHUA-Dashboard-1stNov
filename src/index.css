@@ -24,6 +24,20 @@ body {
   min-height: 100%;
 }
 
+.header-appbar {
+  position: relative;
+  background-image: linear-gradient(120deg, #1b5e20 0%, #2e7d32 30%, #43a047 65%, #66bb6a 100%);
+  background-color: #2e7d32;
+}
+.header-appbar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('/graphics/leaf-watermark.svg') right 10% center / 520px no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
 .header-toolbar {
   display: flex;
   align-items: center;
