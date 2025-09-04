@@ -61,6 +61,11 @@ body {
   background: transparent;
 }
 
+/* Preserve case for tab labels (e.g., MoHUA) */
+.role-tabs .MuiTab-root {
+  text-transform: none;
+}
+
 .header-filters {
   display: grid;
   grid-template-columns: repeat(4, 150px);
