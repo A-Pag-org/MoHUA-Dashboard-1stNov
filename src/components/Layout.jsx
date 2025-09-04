@@ -22,6 +22,13 @@ export default function Layout() {
     : location.pathname.startsWith('/ulbs') ? 'ULBs'
     : location.pathname.startsWith('/apag') ? 'A-PAG' : 'GC';
 
+  React.useEffect(() => {
+    if (userType === 'GC') navigate('/gc');
+    else if (userType === 'MoHUA') navigate('/mohua');
+    else if (userType === 'ULBs') navigate('/ulbs');
+    else if (userType === 'A-PAG') navigate('/apag');
+  }, [userType, navigate]);
+
   return (
     <Box className="app-shell">
       <AppBar position="sticky" color="primary" className="header-appbar">
