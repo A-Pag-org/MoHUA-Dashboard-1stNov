@@ -28,7 +28,6 @@ export default function Layout() {
       <AppBar position="sticky" color="primary" className="header-appbar">
         <Toolbar className="header-toolbar">
           <Typography variant="h6" component="h1" className="brand-title">MoHUA Dashboard</Typography>
-          <Box sx={{ flex: 1 }} />
           <div className="header-filters">
             <FormControl size="small" className="filter-control" fullWidth>
               <InputLabel id="time-mode-label">Time</InputLabel>
