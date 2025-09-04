@@ -78,7 +78,20 @@ body {
 }
 
 .filter-control .MuiInputLabel-root {
-  color: var(--text-secondary);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.2px;
+}
+
+.filter-control .MuiInputLabel-root.MuiInputLabel-shrink {
+  background: var(--surface);
+  padding: 0 4px;
+  z-index: 1;
+}
+
+.filter-control .MuiSelect-select {
+  color: var(--text-primary);
   font-weight: 600;
 }
 
