@@ -10,13 +10,29 @@ import TableRow from '@mui/material/TableRow';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ComposedChart, Line } from 'recharts';
 import { mohuaData } from '../data/mock.js';
 
+import StatCard from '../components/StatCard.jsx';
+
 export default function MoHUA() {
   const percentTargetData = mohuaData.percentTargetIssuesMonthly.map(d => ({ month: d.month, Achieved: d.achieved, Remaining: d.remaining }));
   const resRateByCat = mohuaData.resolutionRateByCategory.map(d => ({ category: d.category, Achieved: d.achieved, Gap: d.gap }));
   const qualityCombo = mohuaData.qualityComboMonthly;
 
+  const lastTarget = percentTargetData[percentTargetData.length - 1]?.Achieved ?? 0;
+  const avgResRate = Math.round(resRateByCat.reduce((s,d)=>s+d.Achieved,0)/resRateByCat.length);
+  const lastQuality = qualityCombo[qualityCombo.length - 1];
+  const avgQuality = Math.round((lastQuality.infra + lastQuality.candd + lastQuality.garbage)/3);
+
   return (
     <Grid container spacing={3} className="dashboard-grid">
+      <Grid item xs={12} md={4}>
+        <StatCard title="% Target (Last Mo)" value={lastTarget} suffix="%" />
+      </Grid>
+      <Grid item xs={12} md={4}>
+        <StatCard title="Resolution Rate (Avg)" value={avgResRate} suffix="%" />
+      </Grid>
+      <Grid item xs={12} md={4}>
+        <StatCard title="Quality (Last Mo)" value={avgQuality} suffix="%" />
+      </Grid>
       <Grid item xs={12}>
         <Paper elevation={2} className="panel panel-table">
           <Typography variant="h6" className="panel-title">Agency-wise Performance</Typography>
