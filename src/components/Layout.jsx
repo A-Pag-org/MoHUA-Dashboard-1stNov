@@ -10,11 +10,12 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { Link, useLocation, Outlet } from 'react-router-dom';
+import { Link, useLocation, Outlet, useNavigate } from 'react-router-dom';
 import { useFilters } from '../state/FiltersContext.jsx';
 
 export default function Layout() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { userType, setUserType, timeMode, setTimeMode, month, setMonth, cityId, setCityId, categoryId, setCategoryId, cities, categories, months } = useFilters();
 
   const currentTab = location.pathname.startsWith('/mohua') ? 'MoHUA'
