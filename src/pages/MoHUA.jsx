@@ -26,13 +26,13 @@ export default function MoHUA() {
   return (
     <Grid container spacing={3} className="dashboard-grid">
       <Grid item xs={12} md={4}>
-        <StatCard title="% Target (Last Mo)" value={lastTarget} suffix="%" />
+        <StatCard title="% Target (Last Mo)" value={lastTarget} suffix="%" description="Share of target issues achieved last month." />
       </Grid>
       <Grid item xs={12} md={4}>
-        <StatCard title="Resolution Rate (Avg)" value={avgResRate} suffix="%" />
+        <StatCard title="Resolution Rate (Avg)" value={avgResRate} suffix="%" description="Average resolution rate across categories." />
       </Grid>
       <Grid item xs={12} md={4}>
-        <StatCard title="Quality (Last Mo)" value={avgQuality} suffix="%" />
+        <StatCard title="Quality (Last Mo)" value={avgQuality} suffix="%" description="Average quality score for the last month." />
       </Grid>
       <Grid item xs={12}>
         <Paper elevation={2} className="panel panel-table">

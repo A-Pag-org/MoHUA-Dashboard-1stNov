@@ -52,23 +52,23 @@ export default function ULBs() {
   return (
     <Grid container spacing={3} className="dashboard-grid">
       <Grid item xs={12} md={4}>
-        <StatCard title="Avg Resolution Speed" value={avgSpeed} suffix="d" subtitle={`Benchmark ${benchmark}d`} subtitleColor={avgSpeed <= benchmark ? '#2e7d32' : '#c62828'} />
+        <StatCard title="Avg Resolution Speed" value={avgSpeed} suffix="d" subtitle={`Benchmark ${benchmark}d`} subtitleColor={avgSpeed <= benchmark ? '#2e7d32' : '#c62828'} description="Average days to resolve an issue." />
       </Grid>
       <Grid item xs={12} md={4}>
-        <StatCard title="Surveyor Avg / Mo" value={avgSurveyor} />
+        <StatCard title="Surveyor Avg / Mo" value={avgSurveyor} description="Average issues per surveyor each month." />
       </Grid>
       <Grid item xs={12} md={4}>
-        <StatCard title="Top Share Category" value={Math.max(...share.map(s=>s.value))} suffix="%" />
+        <StatCard title="Top Share Category" value={Math.max(...share.map(s=>s.value))} suffix="%" description="Largest share among the three categories." />
       </Grid>
 
       <Grid item xs={12} md={3}>
-        <StatCard title="Surveyor Highest" value={surveyorStats.max.value} subtitle={surveyorStats.max.month} />
+        <StatCard title="Surveyor Highest" value={surveyorStats.max.value} subtitle={surveyorStats.max.month} description="Highest monthly surveyor output." />
       </Grid>
       <Grid item xs={12} md={3}>
-        <StatCard title="Surveyor Lowest" value={surveyorStats.min.value} subtitle={surveyorStats.min.month} />
+        <StatCard title="Surveyor Lowest" value={surveyorStats.min.value} subtitle={surveyorStats.min.month} description="Lowest monthly surveyor output." />
       </Grid>
       <Grid item xs={12} md={3}>
-        <StatCard title="Surveyor Average" value={surveyorStats.avg} />
+        <StatCard title="Surveyor Average" value={surveyorStats.avg} description="Average monthly surveyor output." />
       </Grid>
       <Grid item xs={12} md={3}>
         <Paper elevation={1} className="panel panel-summary" style={{ display:'flex', alignItems:'center', justifyContent:'center', padding:'12px' }}>
@@ -77,13 +77,13 @@ export default function ULBs() {
       </Grid>
 
       <Grid item xs={12} md={3}>
-        <StatCard title="Officer Highest" value={officerStats.max.value} subtitle={officerStats.max.month} />
+        <StatCard title="Officer Highest" value={officerStats.max.value} subtitle={officerStats.max.month} description="Highest monthly officer performance (avg across 3 categories)." />
       </Grid>
       <Grid item xs={12} md={3}>
-        <StatCard title="Officer Lowest" value={officerStats.min.value} subtitle={officerStats.min.month} />
+        <StatCard title="Officer Lowest" value={officerStats.min.value} subtitle={officerStats.min.month} description="Lowest monthly officer performance (avg across 3 categories)." />
       </Grid>
       <Grid item xs={12} md={3}>
-        <StatCard title="Officer Average" value={officerStats.avg} />
+        <StatCard title="Officer Average" value={officerStats.avg} description="Average monthly officer performance (avg across 3 categories)." />
       </Grid>
       <Grid item xs={12} md={3}>
         <Paper elevation={1} className="panel panel-summary" style={{ display:'flex', alignItems:'center', justifyContent:'center', padding:'12px' }}>

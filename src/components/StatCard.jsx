@@ -2,7 +2,7 @@ import React from 'react';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
-export default function StatCard({ title, value, suffix = '', subtitle, subtitleColor }) {
+export default function StatCard({ title, value, suffix = '', subtitle, subtitleColor, description }) {
   return (
     <Paper elevation={1} className="stat-card">
       <Typography variant="body2" className="stat-card-title">{title}</Typography>
@@ -12,6 +12,9 @@ export default function StatCard({ title, value, suffix = '', subtitle, subtitle
       </div>
       {subtitle ? (
         <div className="stat-card-subtitle" style={{ color: subtitleColor }}>{subtitle}</div>
+      ) : null}
+      {description ? (
+        <div className="stat-card-description">{description}</div>
       ) : null}
     </Paper>
   );

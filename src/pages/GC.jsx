@@ -19,13 +19,13 @@ export default function GC() {
   return (
     <Grid container spacing={3} className="dashboard-grid">
       <Grid item xs={12} md={4}>
-        <StatCard title="Avg Coverage" value={avgCoverage} suffix="%" subtitle={`Target ${Math.round(targets.resolutionRate*100)}%`} />
+        <StatCard title="Avg Coverage" value={avgCoverage} suffix="%" subtitle={`Target ${Math.round(targets.resolutionRate*100)}%`} description="Average percent of universe covered across cities." />
       </Grid>
       <Grid item xs={12} md={4}>
-        <StatCard title="Resolution (Last Mo)" value={lastRes} suffix="%" subtitle={lastRes >= Math.round(targets.resolutionRate*100) ? 'On Target' : 'Below Target'} subtitleColor={lastRes >= Math.round(targets.resolutionRate*100) ? '#2e7d32' : '#c62828'} />
+        <StatCard title="Resolution (Last Mo)" value={lastRes} suffix="%" subtitle={lastRes >= Math.round(targets.resolutionRate*100) ? 'On Target' : 'Below Target'} subtitleColor={lastRes >= Math.round(targets.resolutionRate*100) ? '#2e7d32' : '#c62828'} description="Resolution rate achieved in the most recent month." />
       </Grid>
       <Grid item xs={12} md={4}>
-        <StatCard title="Avg Quality" value={avgQuality} suffix="%" />
+        <StatCard title="Avg Quality" value={avgQuality} suffix="%" description="Average quality score across cities." />
       </Grid>
       <Grid item xs={12} md={6}>
         <Paper elevation={2} className="panel panel-chart">
