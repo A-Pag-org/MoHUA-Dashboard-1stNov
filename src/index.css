@@ -33,8 +33,8 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('/graphics/leaf-watermark.svg') right 10% center / 520px no-repeat;
-  opacity: 0.08;
+  background: url('/graphics/leaf-watermark.svg') right 8% center / 560px no-repeat;
+  opacity: 0.1;
   pointer-events: none;
 }
 
@@ -42,10 +42,14 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-height: 64px;
+  padding: 0 24px;
 }
 
 .brand-title {
   letter-spacing: 0.2px;
+  font-weight: 500;
+  color: #ffffff;
 }
 
 .content-container {
