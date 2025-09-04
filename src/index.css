@@ -78,21 +78,29 @@ body {
 }
 
 .filter-control .MuiInputLabel-root {
+  position: static;
+  transform: none !important;
   color: var(--text-primary);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   letter-spacing: 0.2px;
+  margin: 0 0 6px 6px;
+  padding: 0;
 }
 
 .filter-control .MuiInputLabel-root.MuiInputLabel-shrink {
-  background: var(--surface);
-  padding: 0 4px;
-  z-index: 1;
+  transform: none !important;
+  background: transparent;
+  padding: 0;
 }
 
 .filter-control .MuiSelect-select {
   color: var(--text-primary);
   font-weight: 600;
+}
+
+.filter-control .MuiOutlinedInput-root {
+  margin-top: 0;
 }
 
 .dashboard-grid {
