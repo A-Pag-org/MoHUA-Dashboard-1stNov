@@ -95,5 +95,15 @@ export const ulbData = {
     infra: randomBetween(25, 45),
     candd: randomBetween(20, 35),
     garbage: randomBetween(25, 40)
+  })),
+  surveyorMonthly: months.map((m) => ({
+    month: m,
+    value: randomBetween(80, 160)
+  })),
+  officerMonthly: months.map((m) => ({
+    month: m,
+    infra: randomBetween(70, 95),
+    candd: randomBetween(60, 90),
+    garbage: randomBetween(65, 92)
   }))
 };
