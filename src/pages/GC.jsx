@@ -5,13 +5,28 @@ import Typography from '@mui/material/Typography';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
 import { gcData, targets } from '../data/mock.js';
 
+import StatCard from '../components/StatCard.jsx';
+
 export default function GC() {
   const coverageData = gcData.coverageByCity.map(d => ({ city: d.city, Covered: d.covered, Remaining: d.remaining }));
   const resolutionData = gcData.resolutionRateMonthly.map(d => ({ month: d.month, Achieved: d.achieved, Remaining: Math.max(0, 100 - d.achieved) }));
   const qualityData = gcData.qualityByCity.map(d => ({ city: d.city, Quality: d.quality, Delta: d.quality - d.prevQuality }));
 
+  const avgCoverage = Math.round(coverageData.reduce((s, d) => s + d.Covered, 0) / coverageData.length);
+  const lastRes = resolutionData[resolutionData.length - 1]?.Achieved ?? 0;
+  const avgQuality = Math.round(qualityData.reduce((s, d) => s + d.Quality, 0) / qualityData.length);
+
   return (
     <Grid container spacing={3} className="dashboard-grid">
+      <Grid item xs={12} md={4}>
+        <StatCard title="Avg Coverage" value={avgCoverage} suffix="%" subtitle={`Target ${Math.round(targets.resolutionRate*100)}%`} />
+      </Grid>
+      <Grid item xs={12} md={4}>
+        <StatCard title="Resolution (Last Mo)" value={lastRes} suffix="%" subtitle={lastRes >= Math.round(targets.resolutionRate*100) ? 'On Target' : 'Below Target'} subtitleColor={lastRes >= Math.round(targets.resolutionRate*100) ? '#2e7d32' : '#c62828'} />
+      </Grid>
+      <Grid item xs={12} md={4}>
+        <StatCard title="Avg Quality" value={avgQuality} suffix="%" />
+      </Grid>
       <Grid item xs={12} md={6}>
         <Paper elevation={2} className="panel panel-chart">
           <Typography variant="h6" className="panel-title">% Universe Covered by City (Cumulative)</Typography>
