@@ -16,18 +16,12 @@ import { useFilters } from '../state/FiltersContext.jsx';
 export default function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { userType, setUserType, timeMode, setTimeMode, month, setMonth, cityId, setCityId, categoryId, setCategoryId, cities, categories, months } = useFilters();
+  const { timeMode, setTimeMode, month, setMonth, cityId, setCityId, categoryId, setCategoryId, cities, categories, months } = useFilters();
 
   const currentTab = location.pathname.startsWith('/mohua') ? 'MoHUA'
     : location.pathname.startsWith('/ulbs') ? 'ULBs'
     : location.pathname.startsWith('/apag') ? 'A-PAG' : 'GC';
 
-  React.useEffect(() => {
-    if (userType === 'GC') navigate('/gc');
-    else if (userType === 'MoHUA') navigate('/mohua');
-    else if (userType === 'ULBs') navigate('/ulbs');
-    else if (userType === 'A-PAG') navigate('/apag');
-  }, [userType, navigate]);
 
   return (
     <Box className="app-shell">
@@ -35,15 +29,6 @@ export default function Layout() {
         <Toolbar className="header-toolbar">
           <Typography variant="h6" component="h1" className="brand-title">MoHUA Dashboard</Typography>
           <Box sx={{ flex: 1 }} />
-          <FormControl size="small" className="filter-control">
-            <InputLabel id="user-type-label">User</InputLabel>
-            <Select labelId="user-type-label" label="User" value={userType} onChange={(e)=>setUserType(e.target.value)}>
-              <MenuItem value="GC">GC</MenuItem>
-              <MenuItem value="MoHUA">MoHUA</MenuItem>
-              <MenuItem value="ULBs">City ULBs</MenuItem>
-              <MenuItem value="A-PAG">A-PAG</MenuItem>
-            </Select>
-          </FormControl>
           <FormControl size="small" className="filter-control">
             <InputLabel id="time-mode-label">Time</InputLabel>
             <Select labelId="time-mode-label" label="Time" value={timeMode} onChange={(e)=>setTimeMode(e.target.value)}>
