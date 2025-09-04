@@ -43,11 +43,19 @@ body {
   background: transparent;
 }
 
+.header-filters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 8px;
+  align-items: center;
+}
+
 .filter-control {
   min-width: 120px;
-  margin-left: 8px;
+  margin-left: 0;
   background: var(--surface);
   border-radius: 8px;
+  width: 100%;
 }
 
 .dashboard-grid {
@@ -159,4 +167,10 @@ body {
 
 @media (min-width: 900px) {
   .chart-wrapper { height: 380px; }
+}
+
+@media (max-width: 899px) {
+  .header-filters {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
 }
