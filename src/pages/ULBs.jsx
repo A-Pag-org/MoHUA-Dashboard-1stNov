@@ -12,6 +12,8 @@ import { ulbData } from '../data/mock.js';
 
 const COLORS = ['#6a1b9a', '#00838f', '#ef6c00'];
 
+import StatCard from '../components/StatCard.jsx';
+
 export default function ULBs() {
   const share = useMemo(() => {
     const c = ulbData.shareResolved[0];
@@ -22,8 +24,21 @@ export default function ULBs() {
     ];
   }, []);
 
+  const avgSpeed = Number((ulbData.resolutionSpeedVsBenchmark.reduce((s,d)=>s+d.speedDays,0)/ulbData.resolutionSpeedVsBenchmark.length).toFixed(1));
+  const benchmark = ulbData.resolutionSpeedVsBenchmark[0]?.benchmarkDays ?? 0;
+  const avgSurveyor = Math.round(ulbData.surveyorProductivity.reduce((s,d)=>s+d.avgPerMonth,0)/ulbData.surveyorProductivity.length);
+
   return (
     <Grid container spacing={3} className="dashboard-grid">
+      <Grid item xs={12} md={4}>
+        <StatCard title="Avg Resolution Speed" value={avgSpeed} suffix="d" subtitle={`Benchmark ${benchmark}d`} subtitleColor={avgSpeed <= benchmark ? '#2e7d32' : '#c62828'} />
+      </Grid>
+      <Grid item xs={12} md={4}>
+        <StatCard title="Surveyor Avg / Mo" value={avgSurveyor} />
+      </Grid>
+      <Grid item xs={12} md={4}>
+        <StatCard title="Top Share Category" value={Math.max(...share.map(s=>s.value))} suffix="%" />
+      </Grid>
       <Grid item xs={12} md={6}>
         <Paper elevation={2} className="panel panel-chart">
           <Typography variant="h6" className="panel-title">Resolution Speed vs Benchmark (Days)</Typography>
