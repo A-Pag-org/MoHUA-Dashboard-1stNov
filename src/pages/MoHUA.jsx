@@ -7,7 +7,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ComposedChart, Line } from 'recharts';
+import { ResponsiveContainer, BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
 import { mohuaData } from '../data/mock.js';
 
 import StatCard from '../components/StatCard.jsx';
@@ -16,6 +16,7 @@ export default function MoHUA() {
   const percentTargetData = mohuaData.percentTargetIssuesMonthly.map(d => ({ month: d.month, Achieved: d.achieved, Remaining: d.remaining }));
   const resRateByCat = mohuaData.resolutionRateByCategory.map(d => ({ category: d.category, Achieved: d.achieved, Gap: d.gap }));
   const qualityCombo = mohuaData.qualityComboMonthly;
+  const qualitySeries = qualityCombo.map(d => ({ ...d, overall: Math.round((d.infra + d.candd + d.garbage)/3) }));
 
   const lastTarget = percentTargetData[percentTargetData.length - 1]?.Achieved ?? 0;
   const avgResRate = Math.round(resRateByCat.reduce((s,d)=>s+d.Achieved,0)/resRateByCat.length);
@@ -84,7 +85,7 @@ export default function MoHUA() {
 
       <Grid item xs={12} md={6}>
         <Paper elevation={2} className="panel panel-chart">
-          <Typography variant="h6" className="panel-title">Resolution Rate (%) across Categories</Typography>
+          <Typography variant="h6" className="panel-title panel-title-compact">Resolution Rate (%) across Categories</Typography>
           <div className="chart-wrapper" role="img" aria-label="Stacked column resolution rate across categories">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={resRateByCat} margin={{ top: 8, right: 16, bottom: 8, left: 0 }}>
@@ -104,19 +105,19 @@ export default function MoHUA() {
       <Grid item xs={12}>
         <Paper elevation={2} className="panel panel-chart">
           <Typography variant="h6" className="panel-title">Quality (%) across Categories</Typography>
-          <div className="chart-wrapper" role="img" aria-label="Combination chart for quality across categories">
+          <div className="chart-wrapper" role="img" aria-label="Line chart with trend for quality across categories">
             <ResponsiveContainer width="100%" height="100%">
-              <ComposedChart data={qualityCombo} margin={{ top: 8, right: 16, bottom: 8, left: 0 }}>
+              <LineChart data={qualitySeries} margin={{ top: 8, right: 16, bottom: 8, left: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
                 <YAxis domain={[0, 100]} />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="infra" fill="#6a1b9a" />
-                <Bar dataKey="candd" fill="#00838f" />
-                <Bar dataKey="garbage" fill="#ef6c00" />
-                <Line type="monotone" dataKey="infra" stroke="#4a148c" strokeWidth={2} dot={false} />
-              </ComposedChart>
+                <Line type="monotone" dataKey="infra" name="Infra" stroke="#1e88e5" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="candd" name="C&D" stroke="#43a047" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="garbage" name="Garbage" stroke="#fb8c00" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="overall" name="Trend" stroke="#263238" strokeWidth={3} dot={false} />
+              </LineChart>
             </ResponsiveContainer>
           </div>
         </Paper>
