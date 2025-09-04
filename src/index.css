@@ -68,9 +68,9 @@ body {
 
 .header-filters {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: flex-start;
-  gap: 0;
+  gap: 12px;
   flex: 1;
 }
 
