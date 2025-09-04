@@ -30,8 +30,8 @@ export default function Layout() {
           <Typography variant="h6" component="h1" className="brand-title">MoHUA Dashboard</Typography>
           <div className="header-filters">
             <FormControl size="small" className="filter-control" fullWidth>
-              <InputLabel id="time-mode-label">Time</InputLabel>
-              <Select labelId="time-mode-label" label="Time" value={timeMode} onChange={(e)=>setTimeMode(e.target.value)}>
+              <InputLabel id="time-mode-label">Analysis</InputLabel>
+              <Select labelId="time-mode-label" label="Analysis" value={timeMode} onChange={(e)=>setTimeMode(e.target.value)}>
                 <MenuItem value="Monthly">Monthly</MenuItem>
                 <MenuItem value="Cumulative">Cumulative</MenuItem>
               </Select>
